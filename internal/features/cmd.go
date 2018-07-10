@@ -52,7 +52,7 @@ func (ctx *Context) toolShowMeTheCommandHelp() error {
 	if err != nil {
 		return err
 	}
-	resMsg := string(result.Stdout)
+	resMsg := string(result.Stderr)
 	if !strings.Contains(resMsg, "help") {
 		return fmt.Errorf("Can't find the help")
 	}

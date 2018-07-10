@@ -10,6 +10,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "g3cli",
 	Short: "golismero 3 client give you total control of pentest golismero suite",
+	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Hello World")
 	},

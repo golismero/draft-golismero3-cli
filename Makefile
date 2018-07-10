@@ -28,7 +28,10 @@ acceptance: g3cli
 
 
 g3cli: test
-	$(call gocmd,install $(GO_REPO)/cmd/g3cli/...)
+	$(call gocmd,install -ldflags "-s \
+		-X main.Version=$$(cat VERSION) \
+		-X main.BuildTime=$$(TZ=UTC date -u '+%Y-%m-%dT%H:%M:%SZ') \
+		-X main.GitHash=$$(git rev-parse HEAD)" $(GO_REPO)/cmd/g3cli/...)
 
 test: deps
 	$(call gocmd,test -race $(GO_REPO)/pkg/...)
